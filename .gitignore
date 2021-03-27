@@ -1,0 +1,14 @@
+*.cmake
+*.csv
+*.bag
+*.html
+*Cache.txt
+*.o
+*.make
+*__pycache__
+/.vscode
+/Records/*
+/Health_Check/*
+/Packager/Packages/*
+/Recorder/CMakeFiles/*
+!/Health_Check/health_check.py
