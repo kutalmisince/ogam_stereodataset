@@ -9,10 +9,10 @@ import pandas
 import numpy as np
 import cv2
 
-# Path of the file created by extractor
+# Path of the file created by extractor. CHANGE this to desired path
 filepath = "/home/salih/Documents/realsense-workspace/star/Intel RealSense D435I"
 
-# default sub-topic names in the bag file
+# default sub-topic names in the bag file.
 depth_data_file = "/_device_0_sensor_0_Depth_0_image_data.csv"
 depth_meta_data_file = "/_device_0_sensor_0_Depth_0_info_camera_info.csv"
 
@@ -30,7 +30,7 @@ i = 0
 for frame in depth_data:
     
     data_8bit_seperated = np.array(frame[1:-1].split(", "), dtype=np.uint16).reshape((height, 2 * width))
-    data_16bit = (data_8bit_seperated[:,0::2] + (data_8bit_seperated[:,0::2] << 8))
+    data_16bit = (data_8bit_seperated[:,0::2] + (data_8bit_seperated[:,1::2] << 8))
     
     # now data_16bit have the depth value of each pixel in an height x width array
     # save in image format
@@ -38,4 +38,3 @@ for frame in depth_data:
     i += 1
     
     
-
